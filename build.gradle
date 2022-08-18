@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'com.tmax'
+version '0.0.1-imagecreate'
+
+repositories {
+    maven {
+        url "http://192.168.9.12:8081/repository/maven-releases"
+        allowInsecureProtocol = true
+    }
+    maven{url "https://repo.spring.io/milestone"}
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'com.tmax:super-app-server:0.0.4'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "io.projectreactor.netty:reactor-netty-core:1.1.0-M4"
+    implementation "io.projectreactor.netty:reactor-netty-http:1.1.0-M4"
+}
+
+test {
+    useJUnitPlatform()
+}

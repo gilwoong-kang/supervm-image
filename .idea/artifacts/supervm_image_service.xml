@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="supervm_image_service">
+    <output-path>$PROJECT_DIR$/out/artifacts/supervm_image_service</output-path>
+    <root id="archive" name="supervm_image_service.jar" />
+  </artifact>
+</component>
