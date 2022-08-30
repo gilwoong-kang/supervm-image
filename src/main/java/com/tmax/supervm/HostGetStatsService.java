@@ -14,8 +14,9 @@ public class HostGetStatsService extends AbstractServiceObject {
 
         BodyObject response = new DefaultBodyObject();
         JsonObject responseBody = new JsonObject();
+        StringBuilder sb = new StringBuilder();
 
-        request.addProperty("method","Host.getStats");
+        request.addProperty("method","Host.getCapabilities");
         try {
             JsonElement result = VDSMClient.getInstance().start(request);
 

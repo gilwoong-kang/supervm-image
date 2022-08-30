@@ -28,6 +28,8 @@ public class VDSMClient {
 
     private static SslContext sslctx;
 
+    private final static boolean SSL = false;
+
     private VDSMClient(){
     }
 
@@ -50,10 +52,16 @@ public class VDSMClient {
      */
     public JsonElement start(JsonObject jsonobj) throws Exception {
 
+        StringBuilder result = new StringBuilder();
         jsonobj.addProperty("id", UUID.randomUUID().toString());
         jsonobj.addProperty("jsonrpc",JSONRPC_VERSION);
+
+        if(!SSL){
+            return NoSSLVDSMClient.getInstance().start(jsonobj,result);
+        }
+
         EventLoopGroup bossGroup = new NioEventLoopGroup();
-        StringBuilder result = new StringBuilder();
+
 
         try {
             Bootstrap b = new Bootstrap();
