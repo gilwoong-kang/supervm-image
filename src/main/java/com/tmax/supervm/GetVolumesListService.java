@@ -31,7 +31,6 @@ public class GetVolumesListService extends AbstractServiceObject {
         try {
             reqParams.addProperty("storagedomainID",params.get("storagedomainID").getAsString());
             reqParams.addProperty("storagepoolID",params.get("storagepoolID").getAsString());
-            //        reqParams.addProperty("imageID",params.get("imageID").getAsString()); // TODO - optional iamgeID.
 
             request.add("params",reqParams);
 

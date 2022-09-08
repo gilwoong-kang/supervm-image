@@ -18,17 +18,19 @@ import java.util.UUID;
 
 public class VDSMClient {
     private static VDSMClient instance;
-    static final String HOST = System.getProperty("host", "192.168.9.125");
+    static final String HOST = System.getProperty("host", "172.21.3.7");
+//static final String HOST = System.getProperty("host", "192.168.9.125");
     static final int PORT = Integer.parseInt(System.getProperty("port", "54321"));
     static final String REQ_TOPIC = System.getProperty("topic", "jms.topic.vdsm_requests");
     static final String RES_TOPIC = System.getProperty("topic", "jms.topic.vdsm_responses");
-    private static final String KEYSTORE_PATH = "/Users/gilwoongkang/personalLibrary/tmax/SuperVM_Image_Service/SuperVMImageService/build/libs/vdsmkeystore.p12";
+//    private static final String KEYSTORE_PATH = "/Users/gilwoongkang/personalLibrary/tmax/SuperVM_Image_Service/SuperVMImageService/build/libs/vdsmkeystore.p12";
+private static final String KEYSTORE_PATH = "/Users/gilwoongkang/personalLibrary/tmax/tmp/pki/vdsm2/vdsm/vdsmkeystore.p12";
     private static final String KEYSTORE_PASS = "tmax@23";
     private final String JSONRPC_VERSION = "2.0";
 
     private static SslContext sslctx;
 
-    private final static boolean SSL = false;
+    private final static boolean SSL = true;
 
     private VDSMClient(){
     }
@@ -64,6 +66,7 @@ public class VDSMClient {
 
 
         try {
+            System.out.println(jsonobj.toString());
             Bootstrap b = new Bootstrap();
 
             b.group(bossGroup).channel(NioSocketChannel.class);
